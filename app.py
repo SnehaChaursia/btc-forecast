@@ -40,9 +40,13 @@ def make_prediction(prices):
 cov, winkler_mean, avg_width = None, None, None
 if os.path.exists("backtest_results.jsonl"):
     bt = [json.loads(l) for l in open("backtest_results.jsonl")]
-    cov = np.mean([r["coverage_95"] for r in bt])
-    winkler_mean = np.mean([r["winkler_95"] for r in bt])
-    avg_width = np.mean([r["width_95"] for r in bt])
+    first_keys = list(bt[0].keys())
+    cov_key     = [k for k in first_keys if "coverage" in k.lower()][0]
+    winkler_key = [k for k in first_keys if "winkler" in k.lower()][0]
+    width_key   = [k for k in first_keys if "width" in k.lower()][0]
+    cov          = np.mean([r[cov_key]     for r in bt])
+    winkler_mean = np.mean([r[winkler_key] for r in bt])
+    avg_width    = np.mean([r[width_key]   for r in bt])
 
 # Fetch data and predict
 prices = fetch_btc()
