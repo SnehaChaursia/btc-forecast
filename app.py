@@ -99,8 +99,6 @@ fig.add_hline(y=low95,  line_dash="dot", line_color="#E24B4A",
               annotation_text=f"Low ${low95:,.0f}", annotation_position="right")
 fig.add_hline(y=high95, line_dash="dot", line_color="#1D9E75",
               annotation_text=f"High ${high95:,.0f}", annotation_position="right")
-fig.add_vline(x=str(last50.index[-1]), line_dash="dash",
-              line_color="gray", annotation_text="now")
 
 fig.update_layout(
     title="Last 50 hours of BTC price + next-hour predicted range",
