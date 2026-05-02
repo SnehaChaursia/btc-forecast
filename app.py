@@ -8,7 +8,7 @@ import json, os
 
 st.set_page_config(page_title="BTC Forecast", layout="wide")
 
-LOOKBACK = 200
+LOOKBACK = 500
 N_SIMS = 3000
 
 @st.cache_data(ttl=300)
